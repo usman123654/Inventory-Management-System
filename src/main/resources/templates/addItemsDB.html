@@ -10,7 +10,133 @@
 <script type="text/javascript" th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script>
 	function myFunction() {
+		var values = $("#myForm").serialize();
+		var request = $
+				.ajax({
 
+					dataType: 'text',
+					cache: false,
+					url: "/test/get_time.htm",
+					type: "post",
+					data: values,
+					async: true,
+					success: function (successEvent) {
+
+						x = 2;
+						var useride = $("#userid").val();
+
+						var category = $("#selectedcategory option:selected").text();
+
+						var manufacturer = $("#selectedmanufacturer option:selected").text();
+
+						var processor = $("#selectedprocessor option:selected").text();
+
+						var cores = $("#cores").val();
+
+						var model = $("#model").val();
+
+						var ram = $("#ram").val();
+
+						var hardDrive = $("#hardDrive").val();
+
+						var licence = $("#licence").val();
+
+						var referenceLetterNo = $("#refLetterNo").val();
+
+						var serialNo = $("#serialNo").val();
+
+						var servicetagno = $("#serviceTagNo").val();
+
+						var condition = $("#condition option:selected").text();
+
+						var purchaser = $("#purchaser").val();
+
+						var invoice = $("#invoiceBillNo").val();
+
+						var location = $("#locationServer").val();
+
+						var supplier = $("#selectedsupplier option:selected").text();
+
+						var remarks = $("#remarks").val();
+
+						var recommender = $("#recommender").val();
+
+						var date_purchase = $("#date_purchase").val();
+
+						var vendor = $("#vendor").val();
+
+						var date_indent = $("#date_indent").val();
+
+						var date_approval = $("#date_approval").val();
+
+						var date_issuance = $("#date_issuance").val();
+
+						var warranty_expiry_date = $("#date_expiry").val();
+
+						var price = $("#price").val();
+
+						var recommended_by = $("#section option:selected").text();
+
+						var markup = "<tr style='font-size:small'><td></td><td>"
+								+ category
+								+ "</td><td>"
+								+ manufacturer
+								+ "</td><td>"
+								+ processor
+								+ "</td><td>"
+								+ cores
+								+ "</td><td>"
+								+ model
+								+ "</td><td>"
+								+ ram
+								+ "</td><td>"
+								+ hardDrive
+								+ "</td><td>"
+								+ licence
+								+ "</td><td>"
+								+  referenceLetterNo
+								+ "</td><td>"
+								+  serialNo
+								+ "</td><td>"
+								+  servicetagno
+								+ "</td><td>"
+								+  condition
+								+ "</td><td>"
+								+  purchaser
+								+ "</td><td>"
+								+  invoice
+								+ "</td><td>"
+								+  location
+								+ "</td><td>"
+								+  supplier
+								+ "</td><td>"
+								+  date_purchase
+								+ "</td><td>"
+								+  vendor
+								+ "</td><td>"
+								+  warranty_expiry_date
+								+ "</td><td>"
+								+  price
+								+ "</td><td>"
+								+ remarks
+								+ "</td><td>"
+								+ recommended_by
+								+ "</td></tr>";
+
+						alert("Data submitted successfully!");
+						$("#myTable").append(markup);
+
+						$("#myForm").trigger("reset");
+						evt.stopPropagation();
+
+					},
+					error: function (errorevt) {
+						alert("Either service tag no or serial number already exists in the DB or One of the two Service Tag no or Serial number must be entered as unique number");
+						errorevt.stopPropagation();
+					}
+
+				});
+		//return false;
 	}
 </script>
 <script>
